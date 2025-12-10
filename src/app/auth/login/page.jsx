@@ -1,10 +1,41 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import AuthSwiper from '@/components/common/AuthSwiper';
 import ThirdPartyLogin from '@/components/common/ThirdPartyLogin';
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
 import logoLight from '@/assets/images/logo-light.png';
 import PageMetaData from '@/components/PageMetaData';
+import { useAuth } from '@/contexts/AuthContext';
+
 const Login = () => {
+  const [loginData, setLoginData] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Redirect if already authenticated
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    const result = await login(loginData, password);
+
+    if (!result.success) {
+      setError(result.error || 'Login failed. Please check your credentials.');
+      setLoading(false);
+    }
+    // If successful, the login function will handle navigation
+  };
+
   return <>
       <div className="flex min-h-screen w-full items-center justify-center">
         <div className="w-full max-w-md rounded-2xl bg-white px-10 py-12 shadow-2xl">
@@ -17,21 +48,31 @@ const Login = () => {
 
           {/* Title */}
           <div className="mb-8 text-center">
-            <p className="text-sm text-gray-600">Enter your email address and password.</p>
+            <p className="text-sm text-gray-600">Enter your email or username and password.</p>
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-800">
+              {error}
+            </div>
+          )}
+
           {/* Form */}
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="emailaddress" className="mb-2 block text-sm font-medium text-gray-700">
-                Email address
+              <label htmlFor="loginData" className="mb-2 block text-sm font-medium text-gray-700">
+                Email or Username
               </label>
               <input 
                 className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" 
-                type="email" 
-                id="emailaddress" 
+                type="text" 
+                id="loginData" 
                 required 
-                placeholder="Enter your email" 
+                placeholder="Enter your email or username"
+                value={loginData}
+                onChange={(e) => setLoginData(e.target.value)}
+                disabled={loading}
               />
             </div>
 
@@ -44,7 +85,10 @@ const Login = () => {
                 type="password" 
                 required 
                 id="password" 
-                placeholder="Enter your password" 
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={loading}
               />
             </div>
 
@@ -65,11 +109,12 @@ const Login = () => {
             </div> */}
 
             <button 
-              className="mt-4 flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" 
+              className="mt-4 flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" 
               type="submit"
+              disabled={loading}
             >
               <IconifyIcon icon="uil:navigator" className="me-2 text-base" />
-              Log In
+              {loading ? 'Logging in...' : 'Log In'}
             </button>
           </form>
 

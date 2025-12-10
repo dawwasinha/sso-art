@@ -12,7 +12,7 @@ const Footer2 = () => {
               <img src={logoLight} className="w-36" alt="" />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-gray-400">
-              Platform ART menggabungkan empat aplikasi powerful dalam satu ekosistem untuk transformasi digital yang terintegrasi.
+              Platform STAR menggabungkan empat aplikasi powerful dalam satu ekosistem untuk transformasi digital yang terintegrasi.
             </p>
           </div>
           <div className="flex flex-col gap-6 lg:w-6/12 lg:flex-row lg:justify-end lg:gap-12">
@@ -42,7 +42,7 @@ const Footer2 = () => {
       <div className="border-t border-slate-700/20 py-6">
         <div className="container flex flex-wrap items-center justify-center gap-4 text-center md:justify-between md:text-start lg:px-20">
           <p className="text-sm text-gray-400">
-            {currentYear} © ART
+            {currentYear} © STAR
           </p>
         </div>
       </div>

@@ -2,6 +2,8 @@ import { Fragment, useEffect } from 'react';
 import BackToTop from '../BackToTop';
 import { useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { AuthProvider } from '@/contexts/AuthContext';
+
 const AppProviders = ({
   children
 }) => {
@@ -18,8 +20,10 @@ const AppProviders = ({
   }, [pathname]);
   return <Fragment>
       <HelmetProvider>
-        {children}
-        <BackToTop />
+        <AuthProvider>
+          {children}
+          <BackToTop />
+        </AuthProvider>
       </HelmetProvider>
     </Fragment>;
 };

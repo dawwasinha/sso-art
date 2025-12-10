@@ -7,9 +7,9 @@ const Features = () => {
           <div className="mb-14 flex items-center justify-center">
             <div className="max-w-2xl text-center">
               <h5 className="mb-3 text-lg font-semibold uppercase tracking-wider text-primary">
-                Keunggulan ART
+                Keunggulan STAR
               </h5>
-              <h2 className="mb-4 text-4xl/snug font-bold text-gray-800">Mengapa Memilih Platform ART?</h2>
+              <h2 className="mb-4 text-4xl/snug font-bold text-gray-800">Mengapa Memilih Platform STAR?</h2>
               <p className="text-lg text-gray-600">
                 Platform terintegrasi dengan fitur lengkap untuk meningkatkan efisiensi manajemen aset, pelacakan operasi, dan konfigurasi perubahan
               </p>
@@ -72,7 +72,7 @@ const Features = () => {
           <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
             <div className="order-2 md:order-1">
               <div className="mb-6 inline-block rounded-lg bg-primary/10 px-4 py-2">
-                <span className="text-sm font-semibold text-primary">Smart Analytics</span>
+                <span className="text-sm font-semibold text-primary">SmSTAR Analytics</span>
               </div>
               <h2 className="mb-4 text-3xl font-bold text-gray-800 lg:text-4xl">Dashboard Analytics yang Komprehensif</h2>
               <p className="mb-8 text-lg text-gray-600">
@@ -126,7 +126,7 @@ const Features = () => {
               </div>
             </div>
             <div className="order-1 md:order-2">
-              <img src={saasImg} height={650} width={371} className="mx-auto max-h-[650px] max-w-full bg-transparent" alt="ART Dashboard" />
+              <img src={saasImg} height={650} width={371} className="mx-auto max-h-[650px] max-w-full bg-transparent" alt="STAR Dashboard" />
             </div>
           </div>
         </div>

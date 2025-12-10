@@ -6,14 +6,16 @@ import useScrollEvent from '@/hooks/useScrollEvent';
 import { cn } from '@/helpers/cn';
 import logoDark from '@/assets/images/logo-dark.png';
 import logoLight from '@/assets/images/logo-light.png';
+import { useAuth } from '@/contexts/AuthContext';
+
 const TopNavbar = ({
   navLinks,
   isDark
 }) => {
   const navRef = useRef(null);
-  const {
-    scrollY
-  } = useScrollEvent();
+  const { scrollY } = useScrollEvent();
+  const { user, isAuthenticated, logout } = useAuth();
+
   useEffect(() => {
     if (navRef.current) new Gumshoe('.navbar-nav a', {
       offset: 80
@@ -42,17 +44,41 @@ const TopNavbar = ({
                 </li>)}
             </ul>
             <div className="mt-4 flex items-center border-t border-gray-200 pt-4 lg:mt-0 lg:hidden lg:border-none lg:pt-0">
+              {isAuthenticated ? (
+                <div className="flex items-center gap-3">
+                  <button 
+                    onClick={logout} 
+                    className="nav-btn"
+                  >
+                    <IconifyIcon icon="lucide:log-out" className="me-2 h-5 w-5" />
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link to="/auth/login" className="nav-btn">
+                  <IconifyIcon icon="lucide:log-in" className="me-2 h-5 w-5" />
+                  Login
+                </Link>
+              )}
+            </div>
+          </div>
+          <div className="hidden items-center lg:flex">
+            {isAuthenticated ? (
+              <div className="flex items-center gap-3">
+                <button 
+                  onClick={logout} 
+                  className="nav-btn"
+                >
+                  <IconifyIcon icon="lucide:log-out" className="me-2 h-5 w-5" />
+                  Logout
+                </button>
+              </div>
+            ) : (
               <Link to="/auth/login" className="nav-btn">
                 <IconifyIcon icon="lucide:log-in" className="me-2 h-5 w-5" />
                 Login
               </Link>
-            </div>
-          </div>
-          <div className="hidden items-center lg:flex">
-            <Link to="/auth/login" className="nav-btn">
-              <IconifyIcon icon="lucide:log-in" className="me-2 h-5 w-5" />
-              Login
-            </Link>
+            )}
           </div>
         </nav>
       </div>

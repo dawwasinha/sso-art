@@ -7,13 +7,13 @@ const Hero = () => {
             <div className="mt-6 flex justify-center">
               <div className="max-w-3xl">
                 <div className="mb-6 inline-block rounded-full bg-primary/10 px-4 py-2">
-                  <span className="text-sm font-semibold text-primary">ART Ecosystem</span>
+                  <span className="text-sm font-semibold text-primary">STAR Ecosystem</span>
                 </div>
                 <h1 className="mb-6 text-5xl/tight font-bold text-gray-800 lg:text-6xl/tight">
                   Solusi <span className="text-primary">Terintegrasi</span> untuk Transformasi Digital
                 </h1>
                 <p className="mx-auto text-lg text-gray-600 lg:max-w-2xl">
-                  Platform ART menggabungkan tiga aplikasi powerful dalam satu ekosistem: ARISE untuk manajemen aset & risiko, REPORT untuk tracking operasi, dan TRACE untuk konfigurasi perubahan.
+                  Platform STAR menggabungkan tiga aplikasi powerful dalam satu ekosistem: ARISE untuk manajemen aset & risiko, REPORT untuk tracking operasi, dan TRACE untuk konfigurasi perubahan.
                 </p>
               </div>
             </div>
@@ -39,7 +39,7 @@ const Hero = () => {
             <div className="absolute -end-5 -top-10 -z-[1] h-24 w-24 bg-[url('../images/other/dot.svg')]" />
             <div className="absolute -bottom-10 -start-5 -z-[1] h-24 w-24 bg-[url('../images/other/dot2.svg')]" />
           </div>
-          <img src={saas1} alt="ART Platform Dashboard" className="h-full w-full rounded-2xl shadow-2xl" />
+          <img src={saas1} alt="STAR Platform Dashboard" className="h-full w-full rounded-2xl shadow-2xl" />
         </div>
       </div>
     </>;
